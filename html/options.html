@@ -175,6 +175,16 @@
                             <label for="masterPassword">Master Password</label>
                             <input class="standard" type="password" id="masterPassword" onblur="updateMasterHash();" />
                         </div>
+            		<div class="subrow" id="master_confirmation_password_row" style="visibility:hidden;">
+                            <label for="masterConfPassword">Confirm</label>
+                            <input class="standard" type="password" id="masterConfPassword" onblur="updateMasterHash();" />
+                        </div>
+            		<div class="subrow" id="master_password_result_row" style="visibility:hidden;">
+                            <label for="masterConfPassword">Result</label>
+                            <input id='masterPasswordMessage' readonly='true' value=""/>
+                        </div>
+
+
                     </div>
 
                 </div>

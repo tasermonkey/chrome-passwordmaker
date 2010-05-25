@@ -180,12 +180,25 @@ function updateMasterHash() {
     Settings.setKeepMasterPasswordHash(should_keep);    
     if ( should_keep ) {
       var master_pass = $("#masterPassword").val();
-      var new_hash = PasswordMaker_SHA256.any_sha256(master_pass, Settings.masterPasswordCharSet);
-      Settings.setMasterPasswordHash(new_hash);    
+      var confirm_pass = $("#masterConfPassword").val();
+      if ( master_pass == "" || confirm_pass == "" ) {
+        $("#masterPasswordMessage").val("Enter Password to change");
+      }
+      else if ( master_pass != confirm_pass ) {
+        $("#masterPasswordMessage").val("Password does not match");
+      } else {
+        var new_hash = PasswordMaker_SHA256.any_sha256(master_pass, Settings.masterPasswordCharSet);
+        Settings.setMasterPasswordHash(new_hash);    
+        $("#masterPasswordMessage").val("Password Changed");
+      }
       $("#master_password_row").css('visibility', 'visible');
+      $("#master_confirmation_password_row").css('visibility', 'visible');
+      $("#master_password_result_row").css('visibility', 'visible');
     } else {
       Settings.setMasterPasswordHash("");    
       $("#master_password_row").css('visibility', 'hidden');
+      $("#master_confirmation_password_row").css('visibility', 'hidden');
+      $("#master_password_result_row").css('visibility', 'hidden');
     }
 }
 
@@ -200,8 +213,18 @@ $(function() {
 
     $("#hidePassword").attr('checked', Settings.shouldHidePassword());
     $("#keepMasterPasswordHash").attr('checked', Settings.keepMasterPasswordHash());
-    if (Settings.keepMasterPasswordHash())
+    if (Settings.keepMasterPasswordHash()) {
       $("#master_password_row").css('visibility', 'visible');
-    else
+      $("#master_confirmation_password_row").css('visibility', 'visible');
+      $("#master_password_result_row").css('visibility', 'visible');
+      $("#masterPasswordMessage").val("Enter Password to change");
+      $("#masterPassword").val("");
+      $("#masterConfPassword").val("");
+
+    }
+    else {
       $("#master_password_row").css('visibility', 'hidden');
+      $("#master_confirmation_password_row").css('visibility', 'hidden');
+      $("#master_password_result_row").css('visibility', 'hidden');
+    }
 });
