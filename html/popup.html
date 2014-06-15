@@ -1,52 +1,77 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>PasswordMaker Pro</title>
         <link rel="stylesheet" type="text/css" href="../css/awesome-buttons.css">
         <link rel="stylesheet" type="text/css" href="../css/popup.css">
-        <script type="text/javascript" src="../javascript/jquery.min.js"></script>
-        <script type="text/javascript" src="../javascript/passwordmaker/hashutils.js"></script>
-        <script type="text/javascript" src="../javascript/passwordmaker/aes.js"></script>
-        <script type="text/javascript" src="../javascript/passwordmaker/md4.js"></script>
-        <script type="text/javascript" src="../javascript/passwordmaker/md5.js"></script>
-        <script type="text/javascript" src="../javascript/passwordmaker/md5_v6.js"></script>
-        <script type="text/javascript" src="../javascript/passwordmaker/sha256.js"></script>
-        <script type="text/javascript" src="../javascript/passwordmaker/sha1.js"></script>
-        <script type="text/javascript" src="../javascript/passwordmaker/ripemd160.js"></script>
-        <script type="text/javascript" src="../javascript/passwordmaker/l33t.js"></script>
-
-        <script type="text/javascript" src="../javascript/settings.js" ></script>
-        <script type="text/javascript" src="../javascript/profile.js"></script>
-        <script type="text/javascript" src="../javascript/popup.js"></script>
     </head>
     <body>
-        <form>
-        <div class='row' id='head'>
-            <img src='../images/passwdmaker16.png' width='16px' height='16px'/><span>PasswordMaker Pro</span>
-        </div>
-        <div class='row'><label for='password'>Password:</label><input onkeyup="updateFields();" onchange="updateFields();" class='input' id='password' type="password"/></div>
-        <div class='row' id='confirmation_row'><label for='confirmation'>Confirmation:</label><input onkeyup="updateFields();" onchange="updateFields();" class='input' id='confirmation' type="password"/></div>
-        <div class='row'><label>Save Password:</label>
-            <select id="store_location" name="store_location" onchange="updateFields();">
-                  <option value="memory">In memory</option>
-                  <option value="disk">On disk</option>
-                  <option value="never">Never store</option>
-            </select>    
-        </div>
-        <div class='row'><label>Use Profile:</label>
-            <select id="profile" name="profile" onchange="fetchUrlAndUpdateUsedText();updateFields();">
-            </select>    
-        </div>
-        <div class='row'><label for='usedtext'>Used text:</label><input onkeyup="updateFields();" onchange="updateFields();" class='input' id='usedtext'/></div>
-        <div class='row'>
-            <label for='generated'>Generated Password:</label>
-            <input id='generated' readonly='true' value=""/>
-            <a id='activatePassword' class="awesome button largebutton" href="#" onclick="showPasswordField();">Show password</a>
-        </div>
-        
-        <div class='row button-row'>
-            <div id="injectpasswordrow"><input class="awesome" type="button" value="Fill password field" onClick="fillPassword();"/></div>
-            <div id='options'><a class="awesome button" href="#" onClick="chrome.tabs.create({url: 'html/options.html'}); window.close();">Options</a></div>
-        </div>
-        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2" id="header"><img src="../images/passwdmaker48.png" width="20" height="20"><span id="title">PasswordMaker Pro</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><label for="password">Password:</label></td>
+                    <td><input class="input" id="password" type="password"></td>
+                </tr>
+                <tr id="confirmation_row">
+                    <td><label for="confirmation">Confirmation:</label></td>
+                    <td><input class="input" id="confirmation" type="password"></td>
+                </tr>
+                <tr id="verification_row">
+                    <td><label for="verification">Verification Code:</label></td>
+                    <td><input class="input" id="verificationCode" readonly></td>
+                </tr>
+                <tr id="store_location_row">
+                    <td><label>Save Password:</label></td>
+                    <td>
+                        <select id="store_location" name="store_location">
+                            <option value="memory">In memory</option>
+                            <option value="disk">On disk</option>
+                            <option value="never">Never store</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Use Profile:</label></td>
+                    <td><select id="profile" name="profile"></select></td>
+                </tr>
+                <tr>
+                    <td><label for="usedtext">Used text:</label></td>
+                    <td><input class="input" id="usedtext"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label for="generated">Generated Password:</label>
+                        <input id="generated" readonly>
+                        <button class="awesome" id="activatePassword">Show Password</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" id="button-row">
+                        <button class="awesome" id="copypassword">Copy</button>
+                        <button class="awesome" id="injectpasswordrow" title="Populate all *empty* password fields">Fill Fields</button>
+                        <button class="awesome" id="options">Options</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <script src="../javascript/jquery.min.js"></script>
+        <script src="../javascript/passwordmaker/hashutils.js"></script>
+        <script src="../javascript/passwordmaker/md4.js"></script>
+        <script src="../javascript/passwordmaker/md5.js"></script>
+        <script src="../javascript/passwordmaker/md5_v6.js"></script>
+        <script src="../javascript/passwordmaker/sha256.js"></script>
+        <script src="../javascript/passwordmaker/sha1.js"></script>
+        <script src="../javascript/passwordmaker/ripemd160.js"></script>
+        <script src="../javascript/passwordmaker/l33t.js"></script>
+        <script src="../javascript/securehash.js"></script>
+        <script src="../javascript/settings.js"></script>
+        <script src="../javascript/profile.js"></script>
+        <script src="../javascript/popup.js"></script>
+        <script src="../javascript/sjcl.js"></script>
     </body>
 </html>

@@ -1,23 +1,36 @@
 {
   "name": "PasswordMaker Pro",
-  "version": "0.1.10",
-  "description": "A chrome extension based on passwordmaker.org . Create unique passwords for every webpage using a hashing algorythm.",
+  "version": "0.6.3",
+  "manifest_version": 2,
+  "description": "A chrome extension based on passwordmaker.org . Create unique passwords for every webpage using a hashing algorithm.",
+  "homepage_url": "https://github.com/bitboxer/chrome-passwordmaker",
   "icons": { 
-      "16": "images/passwdmaker16.png",
-      "48": "images/passwdmaker48.png",
-      "128":"images/passwdmaker128.png"
+    "16": "images/passwdmaker16.png",
+    "48": "images/passwdmaker48.png",
+    "128": "images/passwdmaker128.png"
   },
   "browser_action": {
     "default_icon": "images/passwdmaker48.png",
-    "popup": "html/popup.html"
+    "default_popup": "html/popup.html"
   },
   "permissions": [
-      "tabs"
+    "activeTab",
+    "storage"
   ],
   "content_scripts": [ {
-     "js": [ "javascript/jquery.min.js", "javascript/content.js" ],
-     "matches": [ "http://*/*", "https://*/*" ]
+    "js": [ "javascript/content.js" ],
+    "matches": [ "http://*/*", "https://*/*" ],
+    "all_frames": true
   } ],
-  "background_page": "html/background.html",
-  "options_page": "html/options.html"
+  "background": {
+    "scripts": [ "javascript/background.js" ]
+  },
+  "options_page": "html/options.html",
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Alt+Z"
+      }
+    }
+  }
 }

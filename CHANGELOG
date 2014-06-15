@@ -1,0 +1,62 @@
+0.6.3 - 2014-05-29
+
+* Another fix for the fill form function
+* Removed usage of jQuery
+* Reduced permission to active tab
+* Removed sourcemap for jQuery
+
+0.6.2 - 2014-05-23
+
+Fixed fill form bug
+
+0.6.1 - 2014-05-22
+
+Emergency release that should fix problems created
+in the 0.6.0 release.
+
+0.6.0 - 2014-05-18
+
+This release includes lots of stuff done by @heavensrevenge .
+A small list of the many things he did:
+
+* Lots of css and ui improvments
+* Refactored some parts of the javascript code
+* Updating included libraries
+* Closes Request #87: It fills only password fields that are not populated yet
+
+0.5.5 - 2014-04-26
+
+* Fixes Bug #93: Removed warning in Console about jquery sourcemap
+
+0.5.4 - 2013-11-10
+
+* Fixes Bug #86: No edit box for "Keep Master Password Hash" option
+
+0.5.3 - 2013-11-08
+
+* Fixes Bug #85: Error message in chrome developer console
+
+0.5.2 - 2013-11-02
+
+* Fixes Bug #84: If passwort_crypt is empty, the popup crashes
+* Update usage of chrome extension apis to remove deprecated stuff
+* Updated jQuery and jQuery-UI
+
+0.5.1 - 2013-09-21
+
+* Adds option to never save master password
+* Fixes Bug #63: Master password stays saved in extension drop down on Mac, despite "never store"
+
+0.5.0 - 2012-03-25
+
+* Added Alt+Shift+M to invoke the password popup
+* Fixed keyboard handling
+
+0.4.2 - 2012-01-08
+
+* font-family "monospace" for password field
+
+0.4.1 - 2012-01-06
+
+* Starting Changelog
+* #78 - Fixes password not saving on exit
